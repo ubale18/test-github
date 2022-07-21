@@ -22,6 +22,13 @@ steps:
     restoreSolution: '$(solution)'
 
 
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'new-test'
+    organization: 'ubale18'
+    scannerMode: 'MSBuild'
+    projectKey: 'new-test-sonar'
+
 
 - task: VSBuild@1
   inputs:
@@ -30,12 +37,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'new-test'
-    organization: 'ubale18'
-    scannerMode: 'MSBuild'
-    projectKey: 'new-test-sonar'
+
 
 - task: SonarCloudAnalyze@1
 
